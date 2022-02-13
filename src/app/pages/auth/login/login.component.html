@@ -1,0 +1,20 @@
+<div class="login">
+  <h1 class="title">E-Story Map</h1>
+  <form class="login-form" [formGroup]="loginForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Adresse mail</mat-label>
+      <input formControlName="mail" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Mot de passe</mat-label>
+      <input formControlName="password" type="password" matInput>
+    </mat-form-field>
+    <div class="buttons">
+      <div class="row">
+        <button mat-stroked-button color="primary">Connection</button>
+        <button mat-stroked-button >Inscription</button>
+      </div>
+      <button class="connect-google" mat-stroked-button >Continuer avec Google</button>
+    </div>
+  </form>
+</div>
