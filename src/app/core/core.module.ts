@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { FireModule } from './fire/fire.module';
+import { AuthService } from './services/auth.service';
 
 
-
+const MODULE = [
+  FireModule
+];
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    FireModule
+  ],
+  exports: [
+    FireModule
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class CoreModule { }

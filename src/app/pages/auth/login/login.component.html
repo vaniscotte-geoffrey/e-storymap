@@ -11,10 +11,10 @@
     </mat-form-field>
     <div class="buttons">
       <div class="row">
-        <button mat-stroked-button color="primary">Connection</button>
-        <button mat-stroked-button >Inscription</button>
+        <button [disabled]="loginForm.invalid" (click)="login()" mat-stroked-button color="primary">Connection</button>
+        <button (click)="redirectToRegister()" mat-stroked-button >Inscription</button>
       </div>
-      <button class="connect-google" mat-stroked-button >Continuer avec Google</button>
+      <button (click)="googleAuth()" class="connect-google" mat-stroked-button >Continuer avec Google</button>
     </div>
   </form>
 </div>

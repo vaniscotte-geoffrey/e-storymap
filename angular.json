@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "ng-estorymap:build:production",
+            "firebaseProject": "e-storymap",
+            "firebaseHostingSite": "e-storymap"
+          }
         }
       }
     }

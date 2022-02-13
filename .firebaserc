@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "e-storymap": {
+      "hosting": {
+        "ng-estorymap": [
+          "e-storymap"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "e-storymap"
+  }
+}
