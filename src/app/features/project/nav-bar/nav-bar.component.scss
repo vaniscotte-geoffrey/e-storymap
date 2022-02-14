@@ -1,0 +1,30 @@
+.container {
+  height: 100%;
+
+  .sidenav {
+    width: 15%;
+    @media only screen and (max-width: 1200px) {
+      width: 33%;
+    }
+    @media only screen and (max-width: 700px) {
+      width: 50%;
+    }
+  }
+
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em;
+    .right-side {
+      display: flex;
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 1em;
+      }
+    }
+  }
+}

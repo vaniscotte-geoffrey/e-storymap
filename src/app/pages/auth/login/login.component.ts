@@ -30,7 +30,9 @@ export class LoginComponent {
     this.authService.login(this.loginForm.get('mail')?.value, this.loginForm.get('password')?.value).then(
       res => this.router.navigate(['project'])
     ).catch(
-      err => this.snackBar.open('Mauvais identifiant ou mot de passe')
+      err => this.snackBar.open('Mauvais identifiant ou mot de passe', undefined, {
+        duration: 2000
+      })
     );
   }
 
@@ -38,7 +40,9 @@ export class LoginComponent {
     this.authService.googleAuth().then(
       res => this.router.navigate(['project'])
     ).catch(
-      err => this.snackBar.open('Mauvais identifiant ou mot de passe')
+      err => this.snackBar.open('Mauvais identifiant ou mot de passe', undefined, {
+        duration: 2000
+      })
     );
   }
 

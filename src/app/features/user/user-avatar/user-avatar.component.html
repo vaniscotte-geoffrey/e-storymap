@@ -1,2 +1,1 @@
-<img [src]="(user | async)?.photoURL" alt="avatar picture"><br>
-<span>{{ (user | async)?.email }}</span>
+<img class="user-avatar" [height]="height" [src]="(user | async)?.photoURL ?? '/assets/default-avatar.png'" alt="avatar picture">

@@ -1,0 +1,16 @@
+<mat-drawer-container class="container" hasBackdrop=true>
+  <mat-drawer class="sidenav" #drawer mode="over">Side nav</mat-drawer>
+  <mat-drawer-content>
+    <div class="navbar">
+      <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+      <div class="right-side">
+        <app-user-avatar></app-user-avatar>
+        <div class="buttons">
+          <a [routerLink]="['/profil']" >Profil</a>
+          <a (click)="disconnect()">Déconnecter</a>
+        </div>
+      </div>
+    </div>
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -30,7 +30,9 @@ export class RegisterComponent {
     this.authService.register(this.registerForm.get('mail')?.value, this.registerForm.get('password')?.value).then(
       res => this.router.navigate(['auth', 'login'])
     ).catch(
-      err => this.snackBar.open('Mail ou mot de passe incorrect')
+      err => this.snackBar.open('Mail ou mot de passe incorrect', undefined, {
+        duration: 2000
+      })
     )
   }
 }
