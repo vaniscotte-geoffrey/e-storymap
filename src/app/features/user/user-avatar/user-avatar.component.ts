@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class UserAvatarComponent {
   @Input() public height: number = 64;
 
   constructor(private authService: AuthService) {
-    this.user = authService.userData;
+    this.user = authService.userData.pipe(filter(user => !!user)) as Observable<firebase.default.User>;
   }
 
 }

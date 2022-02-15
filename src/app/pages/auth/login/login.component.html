@@ -1,5 +1,5 @@
 <div class="login">
-  <h1 class="title">E-Story Map</h1>
+  <app-title></app-title>
   <form class="login-form" [formGroup]="loginForm">
     <mat-form-field appearance="fill">
       <mat-label>Adresse mail</mat-label>
@@ -14,7 +14,10 @@
         <button [disabled]="loginForm.invalid" (click)="login()" mat-stroked-button color="primary">Connection</button>
         <button (click)="redirectToRegister()" mat-stroked-button >Inscription</button>
       </div>
-      <button (click)="googleAuth()" class="connect-google" mat-stroked-button >Continuer avec Google</button>
+      <button (click)="googleAuth()" class="connect-google" mat-stroked-button >
+        <mat-icon svgIcon="google"></mat-icon>
+        Continuer avec Google
+      </button>
     </div>
   </form>
 </div>

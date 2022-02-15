@@ -11,12 +11,27 @@
     }
   }
 
+  mat-drawer-content {
+    position: absolute;
+    bottom: 0;
+    height: 87%;
+  }
+
   .navbar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 1em;
+    padding: 1em;
+    border-bottom: 1px solid gray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    .menu-button {
+      font-size: 2em;
+    }
     .right-side {
       display: flex;
       .buttons {
@@ -26,5 +41,9 @@
         margin-left: 1em;
       }
     }
+  }
+
+  .content {
+    padding: 1em;
   }
 }

@@ -7,10 +7,10 @@ import { filter, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  public userData: Observable<firebase.default.User>;
+  public userData: Observable<firebase.default.User | null>;
 
   constructor(private auth: AngularFireAuth) {
-    this.userData = auth.authState.pipe(filter(user => !!user)) as Observable<firebase.default.User>;
+    this.userData = auth.authState;
   }
 
   public register(email: string, password: string): Promise<firebase.default.auth.UserCredential> {

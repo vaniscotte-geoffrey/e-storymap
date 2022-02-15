@@ -1,15 +1,17 @@
-<h1 class="title">Créer votre compte E-StoryMap</h1>
-<form [formGroup]="registerForm" class="register-form">
-    <mat-form-field appearance="fill">
-      <mat-label>Adresse mail</mat-label>
-      <input formControlName="mail" matInput>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Mot de passe</mat-label>
-      <input formControlName="password" type="password" matInput>
-    </mat-form-field>
-    <div class="buttons">
-      <button [disabled]="registerForm.invalid" (click)="register()" mat-stroked-button color="primary" >Inscription</button>
-      <button (click)="redirectToLogin()" mat-stroked-button >Connection</button>
-  </div>
-</form>
+<div class="register-container">
+  <app-title [title]="'Créer votre compte E-Story Map'"></app-title>
+  <form [formGroup]="registerForm" class="register-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Adresse mail</mat-label>
+        <input formControlName="mail" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input formControlName="password" type="password" matInput>
+      </mat-form-field>
+      <div class="buttons">
+        <button [disabled]="registerForm.invalid" (click)="register()" mat-stroked-button color="primary" >Inscription</button>
+        <button (click)="redirectToLogin()" mat-stroked-button >Connection</button>
+    </div>
+  </form>
+</div>
