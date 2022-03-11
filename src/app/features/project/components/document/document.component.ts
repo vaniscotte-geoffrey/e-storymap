@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Document } from 'src/app/core/models/document.model';
 
 @Component({
   selector: 'app-document',
@@ -6,15 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./document.component.scss']
 })
 export class DocumentComponent {
+  @Input()
+  public document!: Document;
 
-  img = [
-    'http://www.consult-action.fr/assets/uploads/images2.jpg',
-    'https://e7.pngegg.com/pngimages/569/984/png-clipart-computer-icons-button-button-logo-cross.png',
-    'https://onlyforcarowners.com/wp-content/uploads/2021/09/35fe912c0f198f4e4062dfdea441b0c7-1.jpg'
-  ];
-  public document = {
-    title: 'Mon Document',
-    image: this.img[Math.floor(Math.random() * this.img.length)]
-  }
-
+  constructor(public sanitizer: DomSanitizer) {}
 }

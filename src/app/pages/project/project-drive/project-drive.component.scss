@@ -9,4 +9,13 @@
   app-document {
     width: calc(25% - 8em);
   }
+
+  .add-document {
+    width: fit-content;
+    cursor: pointer;
+    transition: 200ms;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 }
