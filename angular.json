@@ -76,8 +76,7 @@
               "browserTarget": "ng-estorymap:build:production"
             },
             "development": {
-              "browserTarget": "ng-estorymap:build:development",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "ng-estorymap:build:development"
             }
           },
           "defaultConfiguration": "development"

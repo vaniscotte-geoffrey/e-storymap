@@ -17,11 +17,11 @@ export class DocumentService {
   public addFile(file: File): Promise<void> {
     const fd = new FormData();
     fd.append("file", file);
-    return lastValueFrom(this.http.post('/api/document/', fd)).then();
+    return lastValueFrom(this.http.post('http://localhost:8080/api/document/', fd)).then();
   }
 
   public getFile(filename: string): Observable<Document> {
-    return this.http.get('api/document/file/' + filename, {
+    return this.http.get('http://localhost:8080/api/document/file/' + filename, {
       responseType: 'blob' as 'json'
     }).pipe(map((res: any) => {
       const dataType = res.type;
@@ -36,7 +36,7 @@ export class DocumentService {
   }
 
   public getAllFile(): Observable<Document[]> {
-    return this.http.get<string[]>('api/document/').pipe(
+    return this.http.get<string[]>('http://localhost:8080/api/document/').pipe(
       switchMap(files => forkJoin(files.map(file => this.getFile(file))))
     );
   }
