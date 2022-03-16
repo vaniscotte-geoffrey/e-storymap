@@ -6,10 +6,6 @@
   gap: 1em;
   width: 100%;
 
-  app-document {
-    width: calc(25% - 8em);
-  }
-
   .add-document {
     width: fit-content;
     cursor: pointer;
@@ -17,5 +13,8 @@
     &:hover {
       opacity: 0.5;
     }
+  }
+
+  .footer {
   }
 }

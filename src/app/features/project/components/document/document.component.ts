@@ -12,4 +12,8 @@ export class DocumentComponent {
   public document!: Document;
 
   constructor(public sanitizer: DomSanitizer) {}
+
+  public onImgError(event : any): void {
+    event.target.src = 'assets/document.png';
+  }
 }

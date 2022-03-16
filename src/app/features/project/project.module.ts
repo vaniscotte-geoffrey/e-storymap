@@ -5,10 +5,12 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { UserModule } from '../user/user.module';
 import { RouterModule } from '@angular/router';
 import { DocumentComponent } from './components/document/document.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const COMPONENTS = [
   NavBarComponent,
-  DocumentComponent
+  DocumentComponent,
+  FooterComponent
 ];
 
 @NgModule({

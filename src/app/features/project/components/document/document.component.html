@@ -1,4 +1,4 @@
 <div class="document">
-  <img class="image" [src]="document.image" [alt]="document.title">
+  <img class="image" [src]="document.image" (error)="onImgError($event)" [alt]="document.title">
   <span>{{ document.title }}</span>
 </div>
