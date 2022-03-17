@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, SecurityContext } from '@angular/core';
+import { Injectable, OnInit, SecurityContext } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { BehaviorSubject, forkJoin, lastValueFrom, map, Observable, Subject, switchMap, } from 'rxjs';
+import { BehaviorSubject, first, forkJoin, lastValueFrom, map, Observable, of, Subject, switchMap, } from 'rxjs';
 import { Document, DocumentType } from '../models/document.model';
 
 @Injectable({
@@ -9,25 +9,29 @@ import { Document, DocumentType } from '../models/document.model';
 })
 export class DocumentService {
 
-  public compatibilitySubject: Subject<boolean>;
+  public compatibilitySubject: Subject<boolean> = new BehaviorSubject<boolean>(true);
+  private filesSubject: Subject<Document[]> = new BehaviorSubject<Document[]>([]);
+  private readonly REST_URL: string = 'http://localhost:8080/api/';
 
   constructor(
     private http: HttpClient,
     private domSanitizer: DomSanitizer
   ) {
-    this.compatibilitySubject = new BehaviorSubject<boolean>(true);
+    this.getAllFile().then(files => this.filesSubject.next(files));
   }
 
   public addFile(file: File): Promise<void> {
     const fd = new FormData();
     fd.append("file", file);
-    return lastValueFrom(this.http.post('http://localhost:8080/api/document/', fd))
+    return lastValueFrom(this.http.post(this.REST_URL + 'document/', fd))
     .then(() => lastValueFrom(this.getProjectCompatibility()))
-    .then(compatible => this.compatibilitySubject.next(compatible));
+    .then(compatible => this.compatibilitySubject.next(compatible))
+    .then(() => this.getAllFile())
+    .then(docs => this.filesSubject.next(docs));
   }
 
   public getFile(filename: string): Observable<Document> {
-    return this.http.get('http://localhost:8080/api/document/file/' + filename, {
+    return this.http.get(this.REST_URL + 'document/file/' + filename, {
       responseType: 'blob' as 'json'
     }).pipe(map((res: any) => {
       const dataType = res.type;
@@ -42,14 +46,26 @@ export class DocumentService {
     }));
   }
 
-  public getAllFile(): Observable<Document[]> {
-    return this.http.get<string[]>('http://localhost:8080/api/document/').pipe(
-      switchMap(files => forkJoin(files.map(file => this.getFile(file))))
-    );
+  public deleteFile(filename: string): Promise<void> {
+    return lastValueFrom(this.http.get(this.REST_URL + 'document/delete/' + filename))
+    .then(() => lastValueFrom(this.getProjectCompatibility()))
+    .then(compatible => this.compatibilitySubject.next(compatible))
+    .then(() => this.getAllFile())
+    .then(docs => this.filesSubject.next(docs));
+  }
+
+  public getAllFile(): Promise<Document[]> {
+    return lastValueFrom(this.http.get<string[]>(this.REST_URL + 'document/').pipe(
+      switchMap(files => files && files.length === 0 ? of([]) : forkJoin(files.map(file => this.getFile(file))))
+    ));
+  }
+
+  public getAllFile$(): Observable<Document[]> {
+    return this.filesSubject.asObservable();
   }
 
   public getProjectCompatibility(): Observable<boolean> {
-    return this.http.get<boolean>('http://localhost:8080/api/compatibility/');
+    return this.http.get<boolean>(this.REST_URL + 'compatibility/');
   }
 
   public downloadDocument(doc: Document): void {

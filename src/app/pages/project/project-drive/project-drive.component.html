@@ -1,7 +1,7 @@
 <app-nav-bar>
   <div class="document-container">
     <app-document class="add-document" (click)="fileinput.click()" [document]="{title: 'Ajouter un document', image: 'https://endlessicons.com/wp-content/uploads/2012/12/add-icon.png', type: 0}"></app-document>
-    <app-document *ngFor="let doc of docs$ | async" [document]="doc" ></app-document>
+    <app-document *ngFor="let doc of docs" [document]="doc" ></app-document>
   </div>
 </app-nav-bar>
 
