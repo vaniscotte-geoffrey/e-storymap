@@ -13,7 +13,7 @@ export class FooterComponent implements OnDestroy {
   private compatible_: Subscription;
 
   constructor(private documentService: DocumentService) {
-    this.compatible_ = documentService.compatibilitySubject.asObservable().subscribe(compatible => {
+    this.compatible_ = this.documentService.getProjectCompatibility$().subscribe(compatible => {
       this.compatible = compatible;
     });
   }

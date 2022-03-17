@@ -12,7 +12,8 @@ export const environment = {
     messagingSenderId: '689243584170',
     measurementId: 'G-JGJ4PMFM2Z',
   },
-  production: false
+  production: false,
+  backend: 'http://localhost:8080/api/'
 };
 
 /*
