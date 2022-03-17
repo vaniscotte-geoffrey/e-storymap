@@ -15,7 +15,6 @@ export class FooterComponent implements OnDestroy {
   constructor(private documentService: DocumentService) {
     this.compatible_ = documentService.compatibilitySubject.asObservable().subscribe(compatible => {
       this.compatible = compatible;
-      console.log(compatible)
     });
   }
 
