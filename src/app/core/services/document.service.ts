@@ -11,7 +11,7 @@ export class DocumentService {
 
   public compatibilitySubject: Subject<boolean> = new BehaviorSubject<boolean>(true);
   private filesSubject: Subject<Document[]> = new BehaviorSubject<Document[]>([]);
-  private readonly REST_URL: string = 'http://localhost:8080/api/';
+  private readonly REST_URL: string = 'http://146.59.226.53:8080/api/';
 
   constructor(
     private http: HttpClient,
